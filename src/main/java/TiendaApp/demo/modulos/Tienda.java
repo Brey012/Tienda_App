@@ -1,6 +1,9 @@
 package TiendaApp.demo.modulos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="Tabla_Tienda")
@@ -9,6 +12,10 @@ public class Tienda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tienda")
     private int id_tienda;
+
+    @OneToMany(mappedBy = "tienda")
+    @JsonManagedReference
+    private List<Producto> productos;
 
     @Column(name = "nombre_tienda", length = 100, nullable = false)
     private String nombre_tienda;
