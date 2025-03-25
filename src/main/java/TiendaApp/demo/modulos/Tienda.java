@@ -13,9 +13,15 @@ public class Tienda {
     @Column(name = "id_tienda")
     private int id_tienda;
 
+    //Fk Id_tienda
     @OneToMany(mappedBy = "tienda")
     @JsonManagedReference
     private List<Producto> productos;
+
+    //Fk Pedido
+    @OneToMany(mappedBy = "Pedido")
+    @JsonManagedReference
+    private List<Pedido> pedidos;
 
     @Column(name = "nombre_tienda", length = 100, nullable = false)
     private String nombre_tienda;

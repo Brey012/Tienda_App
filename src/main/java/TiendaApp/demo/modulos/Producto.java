@@ -17,8 +17,6 @@ public class Producto {
     @JsonBackReference
     private Tienda tienda;
 
-    //
-
     @Column(name = "nombre_producto", length = 100, nullable = false)
     private String nombre_producto;
     @Column(name = "precio_producto", length = 100, nullable = false)

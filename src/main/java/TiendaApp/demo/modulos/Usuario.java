@@ -1,7 +1,10 @@
 package TiendaApp.demo.modulos;
 
 import TiendaApp.demo.Enums.EnumUsuario;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="Tabla_Usuario")
@@ -22,6 +25,11 @@ public class Usuario {
     private String telefono_usuario;
     @Column(name = "tipo_usuario", length = 100, nullable = false)
     private EnumUsuario tipo_usuario;
+
+    // FK Pedido
+    @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference
+    private List<Pedido> pedidos;
 
     public Usuario() {
     }
