@@ -34,6 +34,11 @@ public class Pedido {
     @JsonManagedReference
     private List<DetallePedido> detallePedidos;
 
+    // FK Entrega
+    @OneToMany(mappedBy = "pedido")
+    @JsonManagedReference
+    private List<Entrega> entregas;
+
     @Column(name = "estado_pedido", length = 100, nullable = false)
     private EnumEstadoPedido estado_pedido;
     @Column(name = "fecha_pedido", length = 100, nullable = false)

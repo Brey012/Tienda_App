@@ -1,6 +1,7 @@
 package TiendaApp.demo.modulos;
 
 import TiendaApp.demo.Enums.EnumEstadoEntrega;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -15,8 +16,16 @@ public class Entrega {
     private int id_entrega;
 
     // FK id_pedido
+    @ManyToOne
+    @JoinColumn(name = "fk_pedido", referencedColumnName = "id_pedido")
+    @JsonBackReference
+    private Pedido pedido;
 
     // FK id_repartidor
+    @ManyToOne
+    @JoinColumn(name = "fk_repartidor", referencedColumnName = "id_repartidor")
+    @JsonBackReference
+    private Repartidor repartidor;
 
     @Column(name = "fecha_entrega", length = 100, nullable = false)
     private Date fecha_entrega;

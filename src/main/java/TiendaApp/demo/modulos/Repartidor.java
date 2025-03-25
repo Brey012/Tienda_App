@@ -1,6 +1,9 @@
 package TiendaApp.demo.modulos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Tabla_Repartidor")
@@ -10,6 +13,11 @@ public class Repartidor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_repartidor")
     private int id_repartidor;
+
+    // FK Entrega
+    @OneToMany(mappedBy = "repartidor")
+    @JsonManagedReference
+    private List<Entrega> entregas;
 
     @Column(name = "nombre_repartidor", length = 100, nullable = false)
     private String nombre_repartidor;
