@@ -31,6 +31,11 @@ public class Usuario {
     @JsonManagedReference
     private List<Pedido> pedidos;
 
+    // FK Direccion
+    @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference
+    private List<Direccion> direcciones;
+
     public Usuario() {
     }
 

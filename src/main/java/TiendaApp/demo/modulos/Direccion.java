@@ -1,5 +1,6 @@
 package TiendaApp.demo.modulos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,10 @@ public class Direccion {
     private Long id_direccion;
 
     // FK id_usuario
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
+    @JsonBackReference
+    private Usuario usuario;
 
     @Column(name = "calle", length = 100, nullable = false)
     private String calle;
