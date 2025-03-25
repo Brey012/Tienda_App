@@ -1,5 +1,6 @@
 package TiendaApp.demo.modulos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,8 +13,16 @@ public class DetallePedido {
     private int id_detalle_pedido;
 
     // FK id_pedido
+    @ManyToOne
+    @JoinColumn(name = "id_pedido", referencedColumnName = "id_pedido")
+    @JsonManagedReference
+    private Pedido pedido;
 
     // FK id_producto
+    @ManyToOne
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    @JsonManagedReference
+    private Producto producto;
 
     @Column(name = "cantidad_producto", length = 100, nullable = false)
     private int cantidad_producto;

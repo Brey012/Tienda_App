@@ -1,7 +1,10 @@
 package TiendaApp.demo.modulos;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="Tabla_Producto")
@@ -16,6 +19,11 @@ public class Producto {
     @JoinColumn(name = "fk_tienda", referencedColumnName = "id_tienda")
     @JsonBackReference
     private Tienda tienda;
+
+    // Fk DetallePedido
+    @OneToMany(mappedBy = "producto")
+    @JsonManagedReference
+    private List<DetallePedido> detallePedidos;
 
     @Column(name = "nombre_producto", length = 100, nullable = false)
     private String nombre_producto;

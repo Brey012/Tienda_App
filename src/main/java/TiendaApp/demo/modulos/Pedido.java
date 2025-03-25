@@ -2,9 +2,11 @@ package TiendaApp.demo.modulos;
 
 import TiendaApp.demo.Enums.EnumEstadoPedido;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Tabla_Pedido")
@@ -26,6 +28,11 @@ public class Pedido {
     @JoinColumn(name = "fk_tienda", referencedColumnName = "id_tienda")
     @JsonBackReference
     private Tienda tienda;
+
+    // FK DetallePedido
+    @OneToMany(mappedBy = "pedido")
+    @JsonManagedReference
+    private List<DetallePedido> detallePedidos;
 
     @Column(name = "estado_pedido", length = 100, nullable = false)
     private EnumEstadoPedido estado_pedido;
