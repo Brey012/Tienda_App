@@ -3,7 +3,7 @@ package TiendaApp.demo.modulos;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "DetallePedido")
+@Table(name = "Tabla_DetallePedido")
 public class DetallePedido {
 
     @Id
