@@ -2,6 +2,7 @@ package TiendaApp.demo.modulos;
 
 import TiendaApp.demo.Enums.EnumEstadoPago;
 import TiendaApp.demo.Enums.EnumMetodoPago;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -16,6 +17,10 @@ public class Pago {
     private int id_pago;
 
     // FK id_pedido
+    @ManyToOne
+    @JoinColumn(name = "fk_pedido", referencedColumnName = "id_pedido")
+    @JsonBackReference
+    private Pedido pedido;
 
     @Column(name = "metodo_pago", length = 100, nullable = false)
     private EnumMetodoPago metodo_pago;
