@@ -1,11 +1,12 @@
 package TiendaApp.demo.servicios;
 
-import TiendaApp.demo.repositorios.IUsuario;
+import TiendaApp.demo.repositorios.IProducto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsuarioServicio {
+public class ProductoServicio {
+
     @Autowired
-    private IUsuario repositorio;
+    private IProducto repositorio;
 }
